@@ -78,7 +78,7 @@ def visualize_features(data):
     #       - scatter plot, color='red', alpha=0.6
     #       - labels and title
     #       - grid
-    axes[1, 0].scatter(data['Bathrooms'], data['Price'], color='green', alpha=0.6)
+    axes[1, 0].scatter(data['Bathrooms'], data['Price'], color='red', alpha=0.6)
     axes[1, 0].set_xlabel('Bathrooms (Bathrooms)')
     axes[1, 0].set_ylabel('Price ($)')
     axes[1, 0].set_title('Bathrooms vs Price')
@@ -87,7 +87,7 @@ def visualize_features(data):
     #       - scatter plot, color='orange', alpha=0.6
     #       - labels and title
     #       - grid
-    axes[1, 1].scatter(data['Age'], data['Price'], color='green', alpha=0.6)
+    axes[1, 1].scatter(data['Age'], data['Price'], color='orange', alpha=0.6)
     axes[1, 1].set_xlabel('Age (years)')
     axes[1, 1].set_ylabel('Price ($)')
     axes[1, 1].set_title('Age vs Price')
@@ -95,10 +95,10 @@ def visualize_features(data):
     # TODO: Use plt.tight_layout() to make plots fit nicely
     plt.tight_layout()    
     # TODO: Save the figure as 'feature_plots.png' with dpi=300
-    plt.savefig('feature_plotes.png', dpi=300, bbox_inches='tight')
+    plt.savefig('feature_plots.png', dpi=300, bbox_inches='tight')
     
     # TODO: Show the plot
-    print("\n✓ Feature plots saved as 'feature_plot.png'")
+    print("\n✓ Feature plots saved as 'feature_plots.png'")
     plt.show()
 
 
@@ -115,7 +115,7 @@ def prepare_features(data):
     """
     # TODO: Create a list of feature column names
     #       ['SquareFeet', 'Bedrooms', 'Bathrooms', 'Age']
-    feature_columns = ['SquareFeet', 'Bedrooms', 'Bathrooms, Age ']
+    feature_columns = ['SquareFeet', 'Bedrooms', 'Bathrooms', 'Age']
 
     # TODO: Create X by selecting those columns from data
     X = data[feature_columns]
@@ -281,14 +281,14 @@ def make_prediction(model, sqft, bedrooms, bathrooms, age):
     # TODO: Create a DataFrame with the house features
     #       columns should be: ['SquareFeet', 'Bedrooms', 'Bathrooms', 'Age']
     house_features = pd.DataFrame([[sqft, bedrooms, bathrooms,age]], 
-                                 columns=['SquareFeet', 'Bedrooms', 'Bathrooms,Age'])
+                                 columns=['SquareFeet', 'Bedrooms', 'Bathrooms','Age'])
     
     # TODO: Make a prediction using model.predict()
     predicted_price = model.predict(house_features)[0]
  
     # TODO: Print the house specs and predicted price nicely formatted
     print(f"\n=== New Prediction ===")
-    print(f"Car specs: {sqft:.0f},  {bedrooms}, {bathrooms},{age} years old,")
+    print(f"House specs: {sqft:.0f},  {bedrooms}, {bathrooms},{age} years old,")
     print(f"Predicted price: ${predicted_price:,.2f}")
     # TODO: Return the predicted price
     return predicted_price
